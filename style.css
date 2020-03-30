@@ -1,0 +1,52 @@
+body {
+    text-align: center;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+}
+
+.title {
+    color: white;
+    background-color: #0D1B2E;
+    margin: 0px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+}
+
+.tray {
+    color: white;
+    background-color: #429890;
+    margin: 0px, 0px;
+    padding: 20px, 0px;
+}
+.score, .timer, .reset {
+    display: inline-block;
+    margin-left: 100px;
+
+}
+
+.reset {
+    padding: .5em 1em;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #E95D0F;
+    background: white;
+    border: 10px solid #E95D0F;
+}
+
+.reset:hover {
+    color: white;
+    background-color: #E95D0F;
+}
+
+
+.shooting-range {
+    display: block;
+    background-color: #0D1B2E;   
+
+}
+
+#myCanvas {
+    background-color: #3976CC;
+}
