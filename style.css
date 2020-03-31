@@ -3,6 +3,8 @@ body {
     color: black;
     font-family: 'Roboto', sans-serif;
     margin: 0px;
+    min-width: 1200px;
+    background-color: #0D1B2E;
 }
 
 p {
@@ -22,6 +24,7 @@ p {
     color: white;
     background-color: #429890;
     margin: 40px, 0px;
+    padding-bottom: 5px;
 }
 .score, .timer, #button {
     display: inline-block;
@@ -31,7 +34,7 @@ p {
 }
 
 #button {
-    padding: .5em 1em;
+    padding: 1em 1em;
     padding-top: 5px;
     padding-bottom: 5px;
     font-size: 1.2em;
@@ -46,24 +49,26 @@ p {
     background-color: #E95D0F;
 }
 
-
-.shooting-range {
-    display: block;
-    background-color: #0D1B2E;   
+#main {
+    background-color: #0D1B2E;
+    width: 100%;
+    height: 480px;
 
 }
 
+form {
+    display: inline-block;
+}
 #myCanvas {
     background-color: #3976CC;
 }
 
-.main {
-    display: inline-block;
-}
 
 .scoreboard {
+    display: inline-block;
     color: white;
-    background-color: #0D1B2E;
     width: 150px;
-    height: 480;
+    position: relative;
+    top: -130px;
+    left: -190px;
 }
