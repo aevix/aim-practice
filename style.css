@@ -20,13 +20,13 @@ body {
     margin: 0px, 0px;
     padding: 20px, 0px;
 }
-.score, .timer, .reset {
+.score, .timer, #button {
     display: inline-block;
     margin-left: 100px;
 
 }
 
-.reset {
+#button {
     padding: .5em 1em;
     font-size: 1.2em;
     font-weight: bold;
@@ -35,7 +35,7 @@ body {
     border: 10px solid #E95D0F;
 }
 
-.reset:hover {
+#button:hover {
     color: white;
     background-color: #E95D0F;
 }
