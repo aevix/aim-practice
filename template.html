@@ -11,12 +11,30 @@
         <h1 class = "title">Shooting Range</h1>
     </header>
     <div class = "tray">
-        <h2 class = "score">score: </h2>
-        <h2 class="timer"> Timer: </h2><span id="seconds">2</span>
+        <h2 class = "score">Score : </h2>
+        <h2 class="timer"> Timer(seconds) : <span id="seconds">60</span></h2>
         <button id = "button" onclick="countdown()">Start</button>
     </div>
-    <div class = "shooting-range">
+    <div id="main">
+        <div class="scoreboard">
+            <p>Top 10 Scores: </p>
+            <ol>
+                <li>best</li>
+                <li>second</li>
+                <li>third</li>
+                <li>fourth</li>
+                <li>fifth</li>
+                <li>sixth</li>
+                <li>seventh</li>
+                <li>eight</li>
+                <li>ninth</li>
+                <li>tenth</li>
+            </ol>
+        </div>
         <canvas id="myCanvas" width="800" height="480"></canvas>
+        <form>
+            <input type="text">
+        </form>
     </div>
 </body>
 </html>

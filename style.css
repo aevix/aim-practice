@@ -5,6 +5,10 @@ body {
     margin: 0px;
 }
 
+p {
+    margin: 0px;
+}
+
 .title {
     color: white;
     background-color: #0D1B2E;
@@ -17,17 +21,19 @@ body {
 .tray {
     color: white;
     background-color: #429890;
-    margin: 0px, 0px;
-    padding: 20px, 0px;
+    margin: 40px, 0px;
 }
 .score, .timer, #button {
     display: inline-block;
-    margin-left: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
 
 }
 
 #button {
     padding: .5em 1em;
+    padding-top: 5px;
+    padding-bottom: 5px;
     font-size: 1.2em;
     font-weight: bold;
     color: #E95D0F;
@@ -49,4 +55,15 @@ body {
 
 #myCanvas {
     background-color: #3976CC;
+}
+
+.main {
+    display: inline-block;
+}
+
+.scoreboard {
+    color: white;
+    background-color: #0D1B2E;
+    width: 150px;
+    height: 480;
 }
