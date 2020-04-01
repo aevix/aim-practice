@@ -50,25 +50,39 @@ p {
 }
 
 #main {
+    text-align: center;
+    position: relative;
     background-color: #0D1B2E;
     width: 100%;
     height: 480px;
 
 }
 
-form {
+#user, #myCanvas, .scoreboard {
     display: inline-block;
+    position: absolute;
+    top: 0px;
 }
+
+#user {
+    width: 100px;
+    height: 100px;
+    right: 150px;
+    top: 100px;
+}
+
 #myCanvas {
     background-color: #3976CC;
+    width: 800px;
+    height: 480px;
+    left: 350px;
 }
 
 
 .scoreboard {
-    display: inline-block;
     color: white;
     width: 150px;
-    position: relative;
-    top: -130px;
-    left: -190px;
+    height: 200px;
+    left: 80px;
+    top: 100px;
 }
