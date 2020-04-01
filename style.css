@@ -3,7 +3,9 @@ body {
     color: black;
     font-family: 'Roboto', sans-serif;
     margin: 0px;
-    min-width: 1200px;
+    width: 100%;
+    height: 1080px;
+    min-width: 1478px;
     background-color: #0D1B2E;
 }
 
@@ -19,70 +21,72 @@ p {
     padding-bottom: 20px;
 
 }
-
+div {
+    display: inline-block;
+}
 .tray {
     color: white;
     background-color: #429890;
-    margin: 40px, 0px;
-    padding-bottom: 5px;
+    width: 100%;
+    height: 70px;
 }
 .score, .timer, #button {
-    display: inline-block;
+    top: 50%;
     margin-left: 50px;
     margin-right: 50px;
 
 }
 
-#button {
+button {
+    top: 50%;
     padding: 1em 1em;
     padding-top: 5px;
     padding-bottom: 5px;
     font-size: 1.2em;
     font-weight: bold;
-    color: #E95D0F;
-    background: white;
+    color: white;
+    background: #E95D0F;
     border: 10px solid #E95D0F;
 }
 
-#button:hover {
-    color: white;
-    background-color: #E95D0F;
+button:hover {
+    color: #E95D0F;
+    background-color: white;
 }
 
 #main {
-    text-align: center;
-    position: relative;
     background-color: #0D1B2E;
     width: 100%;
     height: 480px;
-
+    text-align: center;
 }
 
 #user, #myCanvas, .scoreboard {
-    display: inline-block;
-    position: absolute;
+    margin-left: 50px;
+    margin-right: 50px;
+    height: inherit;
+    vertical-align: top;
     top: 0px;
 }
 
+.scoreboard, #user {
+    margin-top: 30px;
+}
+
 #user {
-    width: 100px;
-    height: 100px;
-    right: 150px;
-    top: 100px;
+    width: 200px;
+
 }
 
 #myCanvas {
     background-color: #3976CC;
-    width: 800px;
-    height: 480px;
-    left: 350px;
+
 }
 
 
 .scoreboard {
     color: white;
     width: 150px;
-    height: 200px;
-    left: 80px;
-    top: 100px;
+
+
 }
