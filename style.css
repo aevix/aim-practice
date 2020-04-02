@@ -80,13 +80,14 @@ button:hover {
 
 #myCanvas {
     background-color: #3976CC;
-
 }
 
 
 .scoreboard {
     color: white;
     width: 150px;
+}
 
-
+form {
+    color: white;
 }

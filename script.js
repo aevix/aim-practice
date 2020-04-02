@@ -1,9 +1,9 @@
 function countdown() {
-    if (document.getElementById("seconds").textContent > 0 && 
-    document.getElementById("seconds").textContent < 60){
+    if (document.getElementById("button").textContent == "Pause"){
         clearInterval(time);
     } else {
         var time = setInterval(helper,1000);
+        document.getElementById("button").textContent = "Pause"
     }
     function helper() {
         var sec = document.getElementById("seconds").textContent;
@@ -24,8 +24,6 @@ function countdown() {
 function myFunction() {
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
-    ctx.beginPath();
-    ctx.arc(100, 75, 50, 0, 2 * Math.PI);
-    
-    document.canvas.appendChild(c);
+    ctx.fillStyle = "#FF0000";
+    ctx.fillRect(20, 20, 150, 100);
   }
