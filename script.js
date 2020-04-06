@@ -19,31 +19,20 @@ function countdown() {
     }
 }
 
-
-function randomX() {
-   var x = Math.floor(Math.random()*780) + 20;
-   return x
+function randomNum(start,end) {
+    return Math.floor(Math.random()*end) + start;
 }
-function randomY() {
-    var y = Math.floor(Math.random()*460) + 20;
-    return y
-}
-function randomR() {
-    var r = Math.floor(Math.random()*20) + 5;
-    return r
-}
-
 function targetGenerator() {
-    if (document.getElementById("button").textContent == "Reset") {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
     var target = setInterval(randomCircles, 750);
     function randomCircles() {
         var c = document.getElementById('myCanvas');
         var ctx = c.getContext('2d');
+        ctx.clearRect(0,0,800, 480);
+        var x = randomNum(40,760);
+        var y = randomNum(40,440);
+        var r = randomNum(10,15);
         ctx.beginPath();
-        ctx.arc(randomX(),randomY(),randomR(),0*Math.PI,2*Math.PI);
-        ctx.stroke();
+        ctx.arc(x,y,r,0*Math.PI,2*Math.PI);
         ctx.fillStyle = "white";
         ctx.fill();
         if (document.getElementById("seconds").textContent == 0) {
