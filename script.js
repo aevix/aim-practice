@@ -26,20 +26,6 @@ function randomNum(start,end) {
     return Math.floor(Math.random()*end) + start;
 }
 
-var mouse = {
-    x: undefined,
-    y: undefined
-}
-var canvas = document.getElementById('myCanvas');
-
-canvas.addEventListener('click',
-    function (event) {
-        mouse.x = event.x;
-        mouse.y = event.y;
-        console.log(mouse);
-    }
-)
-
 function targetGenerator() {
     var target = setInterval(randomCircles, 900);
     var c = document.getElementById('myCanvas');
@@ -60,3 +46,19 @@ function targetGenerator() {
     }
 }
 
+function startTracking() {
+    var mouse = {
+        x: undefined,
+        y: undefined
+    }
+    const myCanvas = document.getElementById('myCanvas');
+    const context = myCanvas.getContext('2d');
+    
+    myCanvas.addEventListener('click',
+        function (event) {
+            mouse.x = event.x;
+            mouse.y = event.y;
+            console.log(mouse);
+        }
+    ) 
+}
