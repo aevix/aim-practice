@@ -1,18 +1,20 @@
 
 
 function countdown() {
+    document.getElementById("button").disabled = true;
+    setTimeout(function(){document.getElementById("button").disabled = false;}, 1000)
     if (document.getElementById("button").textContent == "Reset") {
         document.getElementById("button").textContent = "Start";
         document.getElementById("seconds").textContent = 60;
     } else {
-        document.getElementById("button").textContent = "Reset";
         var time = setInterval(helper, 1000);
+        document.getElementById("button").textContent = "Reset";
         function helper() {
             if (document.getElementById("seconds").textContent == 0) {
                 clearInterval(time);
             } else if (document.getElementById("button").textContent == "Start") {
                 clearInterval(time);
-            } else {
+            } else if (document.getElementById("button").textContent == "Reset"){
                 var sec = document.getElementById("seconds").textContent;
                 sec--;
                 document.getElementById("seconds").textContent = sec;
@@ -51,14 +53,17 @@ function startTracking() {
         x: undefined,
         y: undefined
     }
+    
     const myCanvas = document.getElementById('myCanvas');
     const context = myCanvas.getContext('2d');
-    
-    myCanvas.addEventListener('click',
-        function (event) {
-            mouse.x = event.x;
-            mouse.y = event.y;
-            console.log(mouse);
-        }
-    ) 
+    const offset = myCanvas.getBoundingClientRect();
+    if (document.getElementById("button").textContent == "Reset") {
+        myCanvas.addEventListener('click',
+            function (event) {
+                mouse.x = event.x - offset.left;
+                mouse.y = event.y - offset.top;
+                console.log(mouse);
+            }
+        ) 
+    }
 }
