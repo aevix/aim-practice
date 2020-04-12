@@ -6,14 +6,14 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <title>Aim practice</title>
 </head>
-<body>
+<body onload="addCanvas()">
     <header>
         <h1 class = "title">Shooting Range</h1>
     </header>
     <div class = "tray">
-        <div><h2 class = "score">Score : </h2></div>
+        <div><h2 class = "score">Score : <span id="points">0</span></h2></div>
         <div><h2 class="timer"> Timer(seconds) : <span id="seconds">60</span></h2></div>
-        <div><button id = "button" onclick="countdown(); targetGenerator(); startTracking()">Start</button></div>
+        <div><button id = "button" onclick="countdown(); targetGenerator()">Start</button></div>
     </div>
     <div id="main">
         <div class="scoreboard">
