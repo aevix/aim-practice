@@ -13,7 +13,7 @@
     <div class = "tray">
         <div><h2 class = "score">Score : <span id="points">0</span></h2></div>
         <div><h2 class="timer"> Timer(seconds) : <span id="seconds">60</span></h2></div>
-        <div><button id = "button" onclick="countdown(); targetGenerator()">Start</button></div>
+        <div><button class="button" id = "start" onclick="countdown(); targetGenerator()">Start</button></div>
     </div>
     <div id="main">
         <div class="scoreboard">
@@ -37,8 +37,7 @@
         <div id="user">
             <form>
                 <p>Enter ID to be recorded : </p>
-                <input type="text" value="Only top 10 recorded">
-                <button id = "button">Submit</button>
+                <div><input class="field" type="text" value="Only top 10 recorded"><button class="button" id = "submit">Submit</button></div>
             </form>
         </div>
     </div>

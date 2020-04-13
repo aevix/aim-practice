@@ -1,21 +1,26 @@
-
+var x = undefined;
+var y = undefined;
+var r = undefined;
 
 function countdown() {
-    document.getElementById("button").disabled = true;
-    setTimeout(function(){document.getElementById("button").disabled = false;}, 1000)
-    if (document.getElementById("button").textContent == "Reset") {
-        document.getElementById("button").textContent = "Start";
+    document.getElementById("start").disabled = true;
+    setTimeout(function(){document.getElementById("start").disabled = false;}, 1000)
+    if (document.getElementById("start").textContent == "Reset") {
+        document.getElementById("start").textContent = "Start";
         document.getElementById("seconds").textContent = 60;
         document.getElementById("points").textContent = 0;
     } else {
         var time = setInterval(helper, 1000);
-        document.getElementById("button").textContent = "Reset";
+        document.getElementById("start").textContent = "Reset";
         function helper() {
             if (document.getElementById("seconds").textContent == 0) {
                 clearInterval(time);
-            } else if (document.getElementById("button").textContent == "Start") {
+                x = undefined;
+                y = undefined;
+                r = undefined;
+            } else if (document.getElementById("start").textContent == "Start") {
                 clearInterval(time);
-            } else if (document.getElementById("button").textContent == "Reset"){
+            } else if (document.getElementById("start").textContent == "Reset"){
                 var sec = document.getElementById("seconds").textContent;
                 sec--;
                 document.getElementById("seconds").textContent = sec;
@@ -24,12 +29,9 @@ function countdown() {
     }
 }
 
-var x = undefined;
-var y = undefined;
-var r = undefined;
 
-function randomNum(start,end) {
-    return Math.floor(Math.random()*end) + start;
+function randomNum(Start, End) {
+    return Math.floor(Math.random()*End) + Start;
 }
 
 function targetGenerator() {
@@ -37,17 +39,17 @@ function targetGenerator() {
     var c = document.getElementById('myCanvas');
     var ctx = c.getContext('2d');
     function randomCircles() {
-        x = randomNum(40,760);
-        y = randomNum(40,440);
-        r = randomNum(10,15);
-        ctx.clearRect(0,0,800, 480);
+        ctx.clearRect(0,0,c.width, c.height);
+        x = randomNum(0, c.width);
+        y = randomNum(0, c.height);
+        r = randomNum(7, 12);
         ctx.beginPath();
         ctx.arc(x,y,r,0*Math.PI,2*Math.PI);
         ctx.fillStyle = "white";
         ctx.fill();
-        if (document.getElementById("seconds").textContent == 0 || document.getElementById("button").textContent == "Start") {
+        if (document.getElementById("seconds").textContent == 0 || document.getElementById("start").textContent == "Start") {
             clearInterval(target);
-            ctx.clearRect(0,0,800,480);
+            ctx.clearRect(0,0,c.width,c.height);
         }
     }
 }
@@ -63,31 +65,34 @@ function getMousePos(canvas, evt) {
 function addCanvas() {
     var canvas = document.getElementById('myCanvas');
     var context = canvas.getContext('2d');
-    canvas.addEventListener('click', function(evt) {
+    canvas.addEventListener('mousedown', function(evt) {
         var mousePos = getMousePos(canvas, evt);
-        if (mousePos.x >= x-r && mousePos.x <= x+r && mousePos.y >= y-r && mousePos.y <= y+r) {
-            var points = document.getElementById("points").textContent;
-            points ++;
-            document.getElementById("points").textContent = points;
+        console.log(mousePos);
+        if (mousePos.x >= x-r && mousePos.x <= x+r) {
+            if (mousePos.y >= y-r && mousePos.y <= y+r) {
+                var points = document.getElementById("points").textContent;
+                points ++;
+                document.getElementById("points").textContent = points;
+            }
         }
-        }, false);
+    }, false);
 }
 
 
-// var mouse = {
-//     x: undefined,
-//     y: undefined
-// }
+const sqlite3 = require('sqlite3').verbose();
 
-// function mouseTracking() { 
-//     var canvas = document.getElementById('myCanvas');
-//     var context = canvas.getContext('2d');
-//     const offset = canvas.getBoundingClientRect();
-//     canvas.addEventListener('click',
-//         function (event) {
-//             mouse.x = event.pageX - offset.left,
-//             mouse.y = event.pageY - offset.top
-//             console.log(mouse);
-//         }
-//     )
-// }
+// open database in memory
+let db = new sqlite3.Database(':memory:', (err) => {
+  if (err) {
+    return console.error(err.message);
+  }
+  console.log('Connected to the in-memory SQlite database.');
+});
+
+// close the database connection
+db.close((err) => {
+  if (err) {
+    return console.error(err.message);
+  }
+  console.log('Close the database connection.');
+});
