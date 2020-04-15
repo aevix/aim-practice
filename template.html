@@ -35,9 +35,9 @@
         </div>
         <canvas id="myCanvas" width="800px" height="480px"></canvas>
         <div id="user">
-            <form>
+            <form id="highscore-user" method="POST" action="/highscore">
                 <p>Enter ID to be recorded : </p>
-                <div><input class="field" type="text" value="Only top 10 recorded"><button class="button" id = "submit">Submit</button></div>
+                <div><input class="field" name="name" type="text" value="Only top 10 recorded"><button class="button" id = "submit">Submit</button></div>
             </form>
         </div>
     </div>

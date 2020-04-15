@@ -105,7 +105,3 @@ db.close((err) => {
   }
   console.log('Close the database connection.');
 });
-
-exports.myDateTime = function () {
-    return Date();
-  };
