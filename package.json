@@ -1,0 +1,26 @@
+{
+  "name": "aim-practice",
+  "version": "1.0.0",
+  "description": "aim practice app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aevix/aim-practice.git"
+  },
+  "keywords": [
+    "game"
+  ],
+  "author": "me",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aevix/aim-practice/issues"
+  },
+  "homepage": "https://github.com/aevix/aim-practice#readme",
+  "dependencies": {
+    "ejs": "^3.0.2",
+    "express": "^4.17.1"
+  }
+}
