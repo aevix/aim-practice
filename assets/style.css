@@ -112,3 +112,12 @@ form {
 form {
     color: white;
 }
+
+ol {
+    padding-inline-start: 0px;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+}

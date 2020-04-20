@@ -20,16 +20,9 @@
             <span>
             <p >Top 10 Scores: </p>
             <ol>
-                <li>best</li>
-                <li>second</li>
-                <li>third</li>
-                <li>fourth</li>
-                <li>fifth</li>
-                <li>sixth</li>
-                <li>seventh</li>
-                <li>eight</li>
-                <li>ninth</li>
-                <li>tenth</li>
+                <% for(var i=0; i < topplayer.length; i++){ %>
+                    <li><p><%= topplayer[i].name %></p><p id="pt"><%= topplayer[i].score %></p></li>
+                <% } %>
             </ol>
             </span>
         </div>
