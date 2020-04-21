@@ -41,6 +41,11 @@ form {
     width: 350px;
     height: inherit;
 }
+input {
+    height: 35px;
+    margin-right: 5px;
+}
+
 #submit {
     font-size: x-small;
     float: right;

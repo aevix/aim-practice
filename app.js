@@ -7,14 +7,15 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false});
 
 app.set('view engine', 'ejs');
 app.use('/assets', express.static('assets'));
+app.use(express.json());
 
 app.get('/', function(req, res){
   res.render("profile", {topplayer: data});
 });
 
 app.post('/', urlencodedParser, function(req, res){
-  console.log(req.body);
-  res.render("profile");
+  data.push(req.body);
+  res.json(data);
 });
 
 app.listen(3000);
