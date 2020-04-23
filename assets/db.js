@@ -39,8 +39,8 @@ getName: () => {
 
 
 enterData: function (name,score){
-    db.run(`INSERT INTO scores(name, score)
-            VALUES(name,score)`)
+    // db.run(`INSERT INTO scores(name, score)
+    //         VALUES(name,score)`)
     data.push({name: name, score: score});
 }
 

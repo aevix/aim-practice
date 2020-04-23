@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var {getName,data,enterData} = require('./assets/db');
 
+//populate data from db
 getName();
 //data parser module
 var urlencodedParser = bodyParser.urlencoded({ extended: false});
@@ -22,9 +23,11 @@ app.get('/', function(req, res){
   res.render("profile", {topplayer: data});
 });
 
+
 app.post('/', urlencodedParser, function(req, res){
-  enterData(req.body, 77);
-  res.json(data);
+  enterData(req.body.name, 77);
+  console.log(data);
+  res.json();
 });
 
 
