@@ -13,7 +13,7 @@
         <h1 class = "title">Shooting Range</h1>
     </header>
     <div class = "tray">
-        <div><h2 class = "score">Score : <span name="points"id="points">0</span></h2></div>
+        <div><h2 class = "score">Score : <span name="points" id="points">0</span></h2></div>
         <div><h2 class="timer"> Timer(seconds) : <span id="seconds">60</span></h2></div>
         <div><button class="button" id = "start" onclick="countdown(); targetGenerator()">Start</button></div>
     </div>
@@ -29,9 +29,12 @@
             </span>
         </div>
         <canvas id="myCanvas" width="800px" height="480px"></canvas>
-        <form id="highscore-user" method="POST" action="/">
+        <form id="highscore-user">
             <p>Enter ID to be recorded : </p>
-            <div><input class="field" name="name" type="text" placeholder="Only top 10" required><button class="button" id = "submit">Submit</button></div>
+            <div>
+                <input class="field" name="name" id="highscore-user-name" type="text" placeholder="Only top 10" required>
+                <button class="button" id = "submit">Submit</button>
+            </div>
         </form>
     </div>
 </body>

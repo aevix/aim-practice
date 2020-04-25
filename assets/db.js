@@ -31,6 +31,7 @@ getName: () => {
             if (err){
                 throw err;
             }
+        console.log(row);
         data.push(row);
         })
 
@@ -39,8 +40,9 @@ getName: () => {
 
 
 enterData: function (name,score){
-    // db.run(`INSERT INTO scores(name, score)
-    //         VALUES(name,score)`)
+    const newLocal = `INSERT INTO scores(name, score)
+            VALUES(?,?)`;
+    db.run(newLocal,(name,score));
     data.push({name: name, score: score});
 }
 

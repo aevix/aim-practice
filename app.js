@@ -8,7 +8,7 @@ getName();
 //data parser module
 var urlencodedParser = bodyParser.urlencoded({ extended: false});
 
-// ejs for view
+//ejs for view
 app.set('view engine', 'ejs');
 
 //assets for html
@@ -25,8 +25,7 @@ app.get('/', function(req, res){
 
 
 app.post('/', urlencodedParser, function(req, res){
-  enterData(req.body.name, 77);
-  console.log(data);
+  enterData(req.body.name, req.body.score);
   res.json();
 });
 
