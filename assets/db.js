@@ -1,36 +1,37 @@
 const sqlite3 = require('sqlite3').verbose();
 
-var db = new sqlite3.Database('./db/chinook.db', sqlite3.OPEN_READWRITE, (err) => {
+var db = new sqlite3.Database('./db/data.db', sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
         return console.error(err.message);
     }
-    console.log('Connected to the chinook database.');
+    console.log('Connected to the database.');
     });
 
 var data = [];
 
 module.exports = {
-// db.serialize(() => {
-//     //Queries scheduled here will be serialized.
-//     // db.run('CREATE TABLE scores(name text, score integer)')
-//     //   .run(`INSERT INTO scores(name, score)
-//     //         VALUES('Yuhyun', 99),
-//     //               ('April', 40),
-//     //               ('Eddie', 10)`)
-//         db.each(`SELECT name, score FROM scores`, (err, row) => {
-//         if (err){
-//             throw err;
-//         }
-//         return row;
-//     });
-// });
+create: ()=> {
+    db.run('CREATE TABLE if not exists scores(name TEXT, score INTEGER)');
+    // db.close();
+},
+
 data: data,
 
 getName: () => {
-    db.each(`SELECT name, score FROM scores`, (err, row) => {
+    db.each(`
+    SELECT 
+        name, score 
+    FROM 
+        scores 
+    ORDER BY 
+        score DESC
+    LIMIT 
+        10
+    `, (err, row) => {
             if (err){
                 throw err;
             }
+        console.log(row);
         data.push(row);
         })
 
@@ -39,17 +40,19 @@ getName: () => {
 
 
 enterData: function (name,score){
-    db.run(`INSERT INTO scores(name, score)
-            VALUES(name,score)`)
+    const newLocal = `INSERT INTO scores(name, score)
+            VALUES(?,?)`;
+    db.run(newLocal,[name,score]);
     data.push({name: name, score: score});
 }
 
 
 
-// db.close((err) => {
-//   if (err) {
-//     return console.error(err.message);
-//   }
-//   console.log('Close the database connection.');
-// });
+
 };
+// db.close((err) => {
+//     if (err) {
+//       return console.error(err.message);
+//     }
+//     console.log('Close the database connection.');
+//   });

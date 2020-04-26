@@ -1,13 +1,17 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
-var {getName,data,enterData} = require('./assets/db');
+var {getName,data,enterData,create} = require('./assets/db');
 
+//create initialize datatable
+create();
+
+//populate data from db
 getName();
 //data parser module
 var urlencodedParser = bodyParser.urlencoded({ extended: false});
 
-// ejs for view
+//ejs for view
 app.set('view engine', 'ejs');
 
 //assets for html
@@ -22,9 +26,10 @@ app.get('/', function(req, res){
   res.render("profile", {topplayer: data});
 });
 
+
 app.post('/', urlencodedParser, function(req, res){
-  enterData(req.body, 77);
-  res.json(data);
+  enterData(req.body.name, req.body.score);
+  res.json();
 });
 
 

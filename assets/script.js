@@ -1,20 +1,17 @@
 $(document).ready(function(){
 
-    $('form').on('submit', function(){
-  
-        var item = $('form input');
-  
-        $.ajax({
-          type: 'POST',
-          url: '/',
-          data: item, 
-          success: function(data){
-            //do something with the data via front-end framework
-            location.reload();
-          }
-        });
-  
-        return false;
-  
+    $('#highscore-user').on('submit', function() {
+      $.ajax({
+        type: 'POST',
+        url: '/',
+        data: {
+          name: $('#highscore-user-name').val(),
+          score: $('#points').html()
+        },
+        success: function(){
+          // do something with the data via front-end framework
+          location.reload();
+        }
+      });
     });
 });
