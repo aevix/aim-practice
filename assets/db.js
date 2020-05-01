@@ -7,7 +7,6 @@ var db = new sqlite3.Database('./db/data.db', sqlite3.OPEN_READWRITE, (err) => {
     console.log('Connected to the database.');
     });
 
-var data = [];
 
 module.exports = {
 create: ()=> {
@@ -15,35 +14,53 @@ create: ()=> {
     // db.close();
 },
 
-data: data,
-
-getName: () => {
-    db.each(`
-    SELECT 
-        name, score 
-    FROM 
-        scores 
-    ORDER BY 
-        score DESC
-    LIMIT 
-        10
-    `, (err, row) => {
-            if (err){
-                throw err;
-            }
-        console.log(row);
-        data.push(row);
-        })
-
+data: () => {
+    return new Promise((resolve,reject) => {
+        db.all(`
+        SELECT 
+            name, score 
+        FROM 
+            scores 
+        ORDER BY 
+            score DESC
+        LIMIT 
+            10
+        `, (err, rows) => {
+                if (err){
+                    throw err;
+                }
+            resolve(rows);
+            });   
+    })
 },
 
 
+del: () => {
+    db.run('DELETE FROM scores');
+    console.log('db formatted!');
+},
 
 enterData: function (name,score){
-    const newLocal = `INSERT INTO scores(name, score)
-            VALUES(?,?)`;
-    db.run(newLocal,[name,score]);
-    data.push({name: name, score: score});
+    return new Promise((resolve, reject) => {
+        const newLocal = `INSERT INTO scores(name, score)
+                VALUES(?,?)`;
+        db.run(newLocal,[name,score]);
+        db.all(`
+        SELECT 
+            name, score 
+        FROM 
+            scores 
+        ORDER BY 
+            score DESC
+        LIMIT 
+            10
+        `, (err, rows) => {
+                if (err){
+                    throw err;
+                }
+            resolve(rows);
+            })
+    });
 }
 
 

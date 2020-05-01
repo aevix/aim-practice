@@ -1,13 +1,11 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
-var {getName,data,enterData,create} = require('./assets/db');
-
+var {data,enterData,create, del} = require('./assets/db');
+var start = require('./assets/canvas')
 //create initialize datatable
 create();
 
-//populate data from db
-getName();
 //data parser module
 var urlencodedParser = bodyParser.urlencoded({ extended: false});
 
@@ -22,14 +20,20 @@ app.use(express.json());
 
 
 //routing functions
-app.get('/', function(req, res){
-  res.render("profile", {topplayer: data});
+app.get('/', async function(req, res){
+  var database = await data();
+
+  res.render("profile", {topplayer: database});
 });
 
 
-app.post('/', urlencodedParser, function(req, res){
-  enterData(req.body.name, req.body.score);
-  res.json();
+app.post('/', urlencodedParser, async function(req, res){
+  // del();
+
+    const database = await enterData(req.body.name, req.body.score);
+
+    res.json();
+
 });
 
 
